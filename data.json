@@ -1,0 +1,7 @@
+{
+    "recyclers": [
+      { "id": 1, "name": "Green Recycler", "acceptedWaste": ["plastic", "metal"] },
+      { "id": 2, "name": "Eco Recycler", "acceptedWaste": ["paper", "glass"] }
+    ]
+  }
+  

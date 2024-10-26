@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Data</title>
+
+
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #a855f7; /* Bootstrap primary color */
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: left;
+        }
+
+        label {
+            margin-bottom: 5px;
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        button {
+            background-color: #a855f7; /* Bootstrap primary color */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #a855f7; /* Darker shade of primary */
+        }
+
+        body {
+            overflow: hidden;
+        }
+
+        /* Responsive design */
+        @media (max-width: 400px) {
+            form {
+                width: 100%; /* Full width on smaller screens */
+            }
+        }
+
+        body {
+    background-color: #F5F5DC;
+}
+    </style>
+</head>
+<body>
+    <h2>List your waste you need to recycle!</h2>
+    <form id="data-form">
+        
+        <label for="type">Type:</label>
+        <input type="text" id="type" required>
+        
+        <label for="weight">Weight:</label>
+        <input type="number" id="weight" required>
+        
+        <label for="price">Price:</label>
+        <input type="number" id="price" required>
+        
+        <button type="submit">Submit</button>
+    </form> 
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw-BlAJKE9idY2gCN5udJMBM787yCF3ocveDAMSse7E4PktYxLK5334KgcDMczy5I6U/exec';  // Replace with the Web App URL from Apps Script
+
+        document.getElementById('data-form').addEventListener('submit', e => {
+            e.preventDefault();
+            const data = {
+                type: document.getElementById('type').value,
+                weight: document.getElementById('weight').value,
+                price: document.getElementById('price').value
+            };
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data)
+            })
+            .then(response => alert('Data submitted successfully!'))
+            .catch(error => alert('Error! ' + error.message));
+        });
+    </script>
+</body>
+</html>
